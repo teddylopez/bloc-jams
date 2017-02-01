@@ -18,8 +18,10 @@ html {
 .navbar {
      position: relative;
      padding: 0.5rem;
+     /* #1 */
      background-color: rgba(101,18,95,0.5);
-    z-index: 1;
+     /* #2 */
+     z-index: 1;
  }
  
  .navbar .logo {
@@ -62,7 +64,7 @@ html {
     color: rgb(233,50,117);
 }
 
-.navbar-link:active {
+.links-container .navbar-link:active {
     text-decoration: rgb(233,50,117);
     background-color: white;
 }
@@ -71,6 +73,10 @@ html {
     margin: 0 auto;
     max-width: 64rem;
 }
+
+ .container.narrow {
+     max-width: 56rem;
+ }
 
 /* Medium and small screens (640px) */
  @media (min-width: 640px) {
