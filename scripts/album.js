@@ -76,13 +76,14 @@ var setCurrentAlbum = function(album) {
  window.onload = function() {
      setCurrentAlbum(albumPicasso);
      
-     var totalAlbums = [albumPicasso, albumMarconi, albumLopez];
-     var index = 1;
+     var albums = [albumPicasso, albumMarconi, albumLopez];
+     var index = 0;
      albumImage.addEventListener("click", function(event) {
-         setCurrentAlbum(totalAlbums[index])
+         setCurrentAlbum(albums[index]);
          index++;
-         if (index == totalAlbums.length) {
-             index = 0;
-         }
+            if(index == albums.length) {
+                index = 0;
+            }
      });
- };
+ }
+   
