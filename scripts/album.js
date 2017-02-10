@@ -28,6 +28,21 @@ var albumMarconi = {
      ]
  };
 
+var albumLopez = {
+     title: 'Ted',
+     artist: 'Ted Lopez',
+     label: 'DC',
+     year: '2016',
+     albumArtUrl: 'assets/images/album_covers/DC.png',
+     songs: [
+         { title: 'Leave me alone', duration: '1:01' },
+         { title: 'Headed home', duration: '5:01' },
+         { title: 'Meet me in the city', duration: '3:21'},
+         { title: 'Summertime', duration: '3:14' },
+         { title: 'Friday night', duration: '2:15'}
+     ]
+ };
+
  var createSongRow = function(songNumber, songName, songLength) {
      var template =
         '<tr class="album-view-song-item">'
@@ -40,24 +55,19 @@ var albumMarconi = {
      return template;
  };
 
-var setCurrentAlbum = function(album) {
-     // #1
      var albumTitle = document.getElementsByClassName('album-view-title')[0];
      var albumArtist = document.getElementsByClassName('album-view-artist')[0];
      var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
      var albumImage = document.getElementsByClassName('album-cover-art')[0];
      var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
- 
-     // #2
+
+var setCurrentAlbum = function(album) {
      albumTitle.firstChild.nodeValue = album.title;
      albumArtist.firstChild.nodeValue = album.artist;
      albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
      albumImage.setAttribute('src', album.albumArtUrl);
- 
-     // #3
      albumSongList.innerHTML = '';
  
-     // #4
      for (var i = 0; i < album.songs.length; i++) {
          albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
      }
@@ -65,4 +75,14 @@ var setCurrentAlbum = function(album) {
  
  window.onload = function() {
      setCurrentAlbum(albumPicasso);
+     
+     var totalAlbums = [albumPicasso, albumMarconi, albumLopez];
+     var index = 1;
+     albumImage.addEventListener("click", function(event) {
+         setCurrentAlbum(totalAlbums[index])
+         index++;
+         if (index == totalAlbums.length) {
+             index = 0;
+         }
+     });
  };
